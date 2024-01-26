@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:case_study_2/widgettree.dart';
+import 'package:iStarpoint/widgettree.dart';
 //qoys
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:case_study_2/pages/loginscreen.dart';
-import 'package:case_study_2/pages/registerscreen.dart';
+import 'package:iStarpoint/pages/loginscreen.dart';
+import 'package:iStarpoint/pages/registerscreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

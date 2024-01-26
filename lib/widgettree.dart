@@ -1,10 +1,10 @@
 //saufi
 
-import 'package:case_study_2/auth.dart';
-import 'package:case_study_2/pages/homepage.dart';
-// import 'package:case_study_2/pages/loginregister.dart';
+import 'package:iStarpoint/auth.dart';
+import 'package:iStarpoint/pages/homepage.dart';
+// import 'package:iStarpoint/pages/loginregister.dart';
 import 'package:flutter/material.dart';
-import 'package:case_study_2/pages/loginscreen.dart';
+import 'package:iStarpoint/pages/loginscreen.dart';
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super(key: key);
