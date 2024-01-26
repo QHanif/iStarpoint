@@ -1,8 +1,10 @@
-//zaidi
-
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:iStarpoint/auth.dart';
+import 'package:iStarpoint/pages/claimpage.dart';
+import 'package:iStarpoint/pages/eventpage.dart';
+
+import 'package:iStarpoint/pages/profilepage.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -35,19 +37,71 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: Container(
-            height: double.infinity,
-            width: double.infinity,
-            padding: const EdgeInsets.all(20),
+      appBar: AppBar(
+        title: Text('I-STARPOINTS'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 50.0,
+                width: 150.0,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+                  },
+                  icon: const Icon(Icons.account_circle),
+                  label: const Text('Profile'),
+                ),
+              ),
+            ),
+          ),
+          _userUsername(),
+          _userUid(),
+          _signOutButton(),
+          SizedBox(height: 150),
+          Center(
             child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // _title(),
-                  _userUsername(),
-                  _userUid(),
-                  _signOutButton(),
-                ])));
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  height: 150.0,
+                  width: 150.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EventPage()),
+                      );
+                    },
+                    child: const Text('Events'),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  height: 150.0,
+                  width: 150.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ClaimPage()),
+                      );
+                    },
+                    child: const Text('Claim'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
