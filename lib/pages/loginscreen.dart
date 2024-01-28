@@ -24,62 +24,101 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  Future<void> signInWithEmailAndPassword() async {
+    try {
+      await Auth().signInWithEmailAndPassword(
+        email: _controllerEmail.text,
+        password: _controllerPassword.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        switch (e.code) {
+          case 'invalid-credential':
+            errorMessage = 'Invalid email/password entered. Please try again.';
+            break;
+          default:
+            errorMessage =
+                'An unknown error occurred with error code: ${e.code}.';
+        }
+      });
+    }
+  }
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         color: Colors.lightBlue[100], // Set the background color to light blue
         padding: EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Login',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _controllerEmail,
-              decoration: InputDecoration(
-                fillColor: Colors.white, // Set the fill color to white
-                filled: true, // Enable fill color
-                border: OutlineInputBorder(),
-                labelText: 'Email',
-                prefixIcon: Icon(Icons.email),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Login',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _controllerPassword,
-              obscureText: _isHiddenPassword,
-              decoration: InputDecoration(
-                fillColor: Colors.white, // Set the fill color to white
-                filled: true, // Enable fill color
-                border: OutlineInputBorder(),
-                labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _isHiddenPassword ? Icons.visibility_off : Icons.visibility,
-                  ),
-                  onPressed: _togglePasswordView,
+              SizedBox(height: 20),
+              TextFormField(
+                controller: _controllerEmail,
+                validator: validator.validateEmail,
+                decoration: InputDecoration(
+                  fillColor: Colors.white, // Set the fill color to white
+                  filled: true, // Enable fill color
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                  prefixIcon: Icon(Icons.email),
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              child: Text('Login'),
-              onPressed: () {
-                // Handle login logic here
-              },
-            ),
-            TextButton(
-              child: Text('Forgot password?'),
-              onPressed: () {
-                // Handle forgot password logic here
-              },
-            ),
-          ],
+              SizedBox(height: 20),
+              TextFormField(
+                controller: _controllerPassword,
+                obscureText: _isHiddenPassword,
+                validator: validator.validatePassword,
+                decoration: InputDecoration(
+                  fillColor: Colors.white, // Set the fill color to white
+                  filled: true, // Enable fill color
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                  prefixIcon: Icon(Icons.lock),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isHiddenPassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                    ),
+                    onPressed: _togglePasswordView,
+                  ),
+                ),
+              ),
+              Text(errorMessage == '' ? '' : 'Hmm ? $errorMessage',
+                  style: const TextStyle(color: Colors.red)),
+              SizedBox(height: 20),
+              ElevatedButton(
+                child: Text('Login'),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    signInWithEmailAndPassword();
+                  } // Handle login logic here
+                },
+              ),
+              TextButton(
+                child: Text('Forgot password?'),
+                onPressed: () {
+                  // Handle forgot password logic here
+                },
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+                child: const Text('Go to Register'),
+              ),
+            ],
+          ),
         ),
       ),
     );
