@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                   border: InputBorder.none,
                   labelText: 'Email',
                   labelStyle: TextStyle(color: Colors.black),
-                  prefixIcon: Icon(Icons.email),
+                  suffixIcon: Icon(Icons.email),
                 ),
               ),
               SizedBox(height: 20),
