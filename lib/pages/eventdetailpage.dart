@@ -23,7 +23,17 @@ class _EventDetailPageState extends State<EventDetailPage> {
       ),
       body: Column(
         children: [
-          Image.network(event['eventPicture']),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                event['eventPicture'],
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
+            ),
+          ),
           Text('Date: ${event['eventDate']}'),
           Text('Time: ${event['eventTime']}'),
           Text('Location: ${event['eventLocation']}'),
