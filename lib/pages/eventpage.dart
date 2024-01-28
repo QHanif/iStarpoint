@@ -4,7 +4,7 @@ import 'package:iStarpoint/util/eventdetails.dart';
 class EventPage extends StatelessWidget {
   const EventPage({super.key});
 
-  Widget _event(Map<String, dynamic> event) {
+  Widget _event(BuildContext context, Map<String, dynamic> event) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.all(10),
@@ -71,7 +71,13 @@ class EventPage extends StatelessWidget {
                       ? const Text('Joined',
                           style: TextStyle(color: Colors.green))
                       : ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/eventdetail',
+                              arguments: eventDetails.indexOf(event),
+                            );
+                          },
                           child: const Text('Join Event'),
                         ),
                 ],
@@ -95,8 +101,8 @@ class EventPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: eventDetails
-              .map((event) => _event(event))
-              .toList(), // Use the eventDetails list to create the event widgets
+              .map((event) => _event(context, event)) // Pass context to _event
+              .toList(), //  Use the eventDetails list to create the event widgets
         ),
       ),
     );

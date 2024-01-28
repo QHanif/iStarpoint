@@ -24,6 +24,9 @@ class _EventDetailPageState extends State<EventDetailPage> {
       body: Column(
         children: [
           Image.network(event['eventPicture']),
+          Text('Date: ${event['eventDate']}'),
+          Text('Time: ${event['eventTime']}'),
+          Text('Location: ${event['eventLocation']}'),
           Text(event['eventInfo']),
           SizedBox(
             height: 200, // Adjust as needed
