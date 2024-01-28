@@ -21,16 +21,12 @@ class EventPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      event['eventPicture'],
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  event['eventPicture'],
+                  fit: BoxFit.cover,
+                  width: double.infinity,
                 ),
               ), // Add image at the start of the row
               const SizedBox(height: 20),
