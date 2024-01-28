@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iStarpoint/auth.dart';
@@ -15,92 +16,209 @@ class HomePage extends StatelessWidget {
     await Auth().signOut();
   }
 
-  Widget _title() {
-    return const Text('Firebase Auth');
-  }
-
-  Widget _userUid() {
-    return Text('Email: ${user?.email ?? 'User email'}');
-  }
-
-  Widget _userUsername() {
-    return Text('Username: ${user?.displayName ?? 'User username'}');
-  }
-
-  Widget _signOutButton() {
-    return ElevatedButton(
-      onPressed: _signOut,
-      child: const Text('Sign Out'),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple[100],
       appBar: AppBar(
+        backgroundColor: Colors.purple[300],
         title: Text('I-STARPOINTS'),
-      ),
-      body: Column(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 50.0,
-                width: 150.0,
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ProfilePage()),
-                    );
-                  },
-                  icon: const Icon(Icons.account_circle),
-                  label: const Text('Profile'),
-                ),
+        actions: [
+          Tooltip(
+            // Add a tooltip
+            message: 'Logout',
+            child: IconButton(
+              icon: Icon(
+                Icons.logout,
+                color: Colors.white,
               ),
-            ),
-          ),
-          _userUsername(),
-          _userUid(),
-          _signOutButton(),
-          SizedBox(height: 150),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  height: 150.0,
-                  width: 150.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => EventPage()),
-                      );
-                    },
-                    child: const Text('Events'),
-                  ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  height: 150.0,
-                  width: 150.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => VoucherPage()),
-                      );
-                    },
-                    child: const Text('Claim'),
-                  ),
-                ),
-              ],
+              onPressed: _signOut,
             ),
           ),
         ],
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Welcome  ${user?.displayName ?? ''}',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold, // Make the text bold
+                ),
+              ),
+              SizedBox(height: 80),
+              Container(
+                width: double.infinity,
+                height: 100,
+                child: Card(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4.0),
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Opacity(
+                          opacity: 0.4,
+                          child: Image.network(
+                            'https://www.metrocontinuingeducation.ca/wp-content/uploads/2019/01/in-class-students-high-school.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                          child: Container(
+                            color: Colors.black.withOpacity(0),
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Center(
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.person,
+                                  size: 60.0,
+                                ),
+                                title: Text(
+                                  'Profile',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ProfilePage()),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                height: 100,
+                child: Card(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4.0),
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Opacity(
+                          opacity: 0.4,
+                          child: Image.network(
+                            'https://events.utk.edu/wp-content/uploads/sites/65/2019/01/firstgen.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                          child: Container(
+                            color: Colors.black.withOpacity(0),
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Center(
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.event,
+                                  size: 60.0,
+                                ),
+                                title: Text(
+                                  'Event',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => EventPage()),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                height: 100,
+                child: Card(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4.0),
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Opacity(
+                          opacity: 0.4,
+                          child: Image.network(
+                            'https://www.bhg.com.au/media/29898/gifts-present.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                          child: Container(
+                            color: Colors.black.withOpacity(0),
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Center(
+                              child: ListTile(
+                                leading: Icon(
+                                  Icons.card_giftcard,
+                                  size: 60.0,
+                                ),
+                                title: Text(
+                                  'Voucher',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => VoucherPage()),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

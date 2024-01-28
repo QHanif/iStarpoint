@@ -50,7 +50,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.lightBlue[100], // Set the background color to light blue
+
+        color: Colors.lightBlue[100],
+
         padding: EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
@@ -65,11 +67,14 @@ class _LoginPageState extends State<LoginPage> {
               TextFormField(
                 controller: _controllerEmail,
                 validator: validator.validateEmail,
-                decoration: InputDecoration(
-                  fillColor: Colors.white, // Set the fill color to white
-                  filled: true, // Enable fill color
-                  border: OutlineInputBorder(),
+
+                decoration: const InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: InputBorder.none,
                   labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.black),
+
                   prefixIcon: Icon(Icons.email),
                 ),
               ),
@@ -79,13 +84,16 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: _isHiddenPassword,
                 validator: validator.validatePassword,
                 decoration: InputDecoration(
-                  fillColor: Colors.white, // Set the fill color to white
+
+                  fillColor: Colors.white,
                   filled: true, // Enable fill color
-                  border: OutlineInputBorder(),
+                  border: InputBorder.none,
                   labelText: 'Password',
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: IconButton(
-                    icon: Icon(
+                  labelStyle: TextStyle(color: Colors.black),
+                  suffix: InkWell(
+                    onTap: _togglePasswordView,
+                    child: Icon(
+
                       _isHiddenPassword
                           ? Icons.visibility_off
                           : Icons.visibility,
@@ -111,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                   // Handle forgot password logic here
                 },
               ),
+              SizedBox(height: 20),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/register');
