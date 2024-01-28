@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:iStarpoint/pages/loginscreen.dart';
 import 'package:iStarpoint/pages/registerscreen.dart';
+import 'package:iStarpoint/pages/eventdetailpage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,8 +33,12 @@ class MyApp extends StatelessWidget {
       title: 'My App',
       // initialRoute: '/',
       routes: {
-        '/login': (context) => LoginPage(),
-        '/register': (context) => RegisterPage(),
+        '/login': (context) => const LoginPage(),
+        '/register': (context) => const RegisterPage(),
+        '/eventdetail': (context) => EventDetailPage(
+              eventIndex:
+                  ModalRoute.of(context)!.settings.arguments as int? ?? 0,
+            ),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
