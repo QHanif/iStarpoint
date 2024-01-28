@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:iStarpoint/pages/voucherqrpage.dart';
 import 'package:iStarpoint/widgettree.dart';
 //qoys
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
               eventIndex:
                   ModalRoute.of(context)!.settings.arguments as int? ?? 0,
             ),
+        '/voucherqrpage': (context) => VoucherQrPage(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
