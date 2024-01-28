@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:iStarpoint/util/eventdetails.dart';
 
 class EventPage extends StatelessWidget {
   const EventPage({super.key});
 
-  Widget _event(
-      String name, String date, String time, String venue, String imagePath,
-      {bool isJoined = false}) {
+  Widget _event(Map<String, dynamic> event) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.all(10),
@@ -23,15 +22,13 @@ class EventPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Container(
-                  child: Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        imagePath,
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                      ),
+                child: Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      event['eventPicture'],
+                      fit: BoxFit.cover,
+                      width: double.infinity,
                     ),
                   ),
                 ),
@@ -41,7 +38,7 @@ class EventPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    event['eventTitle'],
                     textAlign: TextAlign.left,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
@@ -50,7 +47,7 @@ class EventPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    venue,
+                    event['eventLocation'],
                     textAlign: TextAlign.left,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
@@ -64,13 +61,13 @@ class EventPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '$date \n$time',
+                    '${event['eventDate']} \n${event['eventTime']}',
                     textAlign: TextAlign.left,
                     style: const TextStyle(
                       color: Color.fromARGB(255, 139, 139, 139),
                     ),
                   ),
-                  isJoined
+                  event['isJoin']
                       ? const Text('Joined',
                           style: TextStyle(color: Colors.green))
                       : ElevatedButton(
@@ -97,49 +94,9 @@ class EventPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _event(
-                "Flutter UI Design Workshop",
-                "30 January 2024 ",
-                "8:00 am - 12:00 pm",
-                "Multi Perpose Hall, KICT",
-                "assets/images/flutter.png"),
-            _event(
-              "Data Science Seminar",
-              "15 February 2024",
-              "10:00 am - 2:00 pm",
-              "Conference Room, KICT",
-              "assets/images/datascience.png",
-            ),
-            _event(
-              "Cybersecurity Workshop",
-              "20 March 2024",
-              "9:00 am - 1:00 pm",
-              "Lab 5, KICT",
-              "assets/images/cybersecurity.png",
-            ),
-            _event(
-              "AI and Machine Learning Talk",
-              "25 April 2024",
-              "11:00 am - 3:00 pm",
-              "Auditorium, KICT",
-              "assets/images/ai_ml.png",
-            ),
-            _event(
-              "Web Development Bootcamp",
-              "30 May 2024",
-              "8:00 am - 12:00 pm",
-              "Lab 6, KICT",
-              "assets/images/webdev.png",
-            ),
-            _event(
-              "Cloud Computing Symposium",
-              "10 June 2024",
-              "9:00 am - 1:00 pm",
-              "Conference Room, KICT",
-              "assets/images/cloudcomputing.png",
-            ),
-          ],
+          children: eventDetails
+              .map((event) => _event(event))
+              .toList(), // Use the eventDetails list to create the event widgets
         ),
       ),
     );
