@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class EventPage extends StatefulWidget {
+  const EventPage({super.key});
+
   @override
   _EventPageState createState() => _EventPageState();
 }
@@ -24,35 +26,47 @@ class _EventPageState extends State<EventPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
+            SizedBox(
               height: 150.0, // specify the height
               width: 200.0,
               child: ElevatedButton(
                 onPressed: () {
-                  // Put your code here for button 1
-              },
+                  Navigator.pushNamed(
+                    context,
+                    '/eventdetail',
+                    arguments: 0, // index of the event in the eventDetails list
+                  );
+                },
                 child: Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset('assets/ai-generated-8270714_640.png', height: 100, width:100), // replace with your image path
+                    Image.asset('assets/ai-generated-8270714_640.png',
+                        height: 100,
+                        width: 100), // replace with your image path
                     const Text('Annual Cat Show'),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            SizedBox(
               height: 150.0, // specify the height
               width: 200.0,
               child: ElevatedButton(
                 onPressed: () {
-                  // Put your code here for button 1
-              },
+                  Navigator.pushNamed(
+                    context,
+                    '/eventdetail',
+                    arguments: 1, // index of the event in the eventDetails list
+                  );
+                },
                 child: Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset('assets/pexels-tima-miroshnichenko-5380610.jpg', height: 100, width:100), // replace with your image path
-                    Text('Cybersecurity Camp'),
+                    Image.asset('assets/pexels-tima-miroshnichenko-5380610.jpg',
+                        height: 100,
+                        width: 100), // replace with your image path
+                    const Text('Cybersecurity Camp'),
                   ],
                 ),
               ),
@@ -63,5 +77,3 @@ class _EventPageState extends State<EventPage> {
     );
   }
 }
-
-
