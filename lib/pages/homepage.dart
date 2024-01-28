@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iStarpoint/auth.dart';
-import 'package:iStarpoint/pages/claimpage.dart';
+import 'package:iStarpoint/pages/voucherpage.dart';
 import 'package:iStarpoint/pages/eventpage.dart';
 
 import 'package:iStarpoint/pages/profilepage.dart';
@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ClaimPage()),
+                        MaterialPageRoute(builder: (context) => VoucherPage()),
                       );
                     },
                     child: const Text('Claim'),
