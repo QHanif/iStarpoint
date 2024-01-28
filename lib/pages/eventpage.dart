@@ -22,14 +22,12 @@ class EventPage extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  child: Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        imagePath,
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                      ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
                     ),
                   ),
                 ),
