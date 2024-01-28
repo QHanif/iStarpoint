@@ -1,5 +1,3 @@
-//saufi
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../auth.dart';
@@ -51,51 +49,67 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
+        color: Colors.lightBlue[100], // Set the background color to light blue
+        padding: EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text(
+                'Login',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
               TextFormField(
                 controller: _controllerEmail,
                 validator: validator.validateEmail,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
+                  fillColor: Colors.white, // Set the fill color to white
+                  filled: true, // Enable fill color
+                  border: OutlineInputBorder(),
                   labelText: 'Email',
+                  prefixIcon: Icon(Icons.email),
                 ),
               ),
+              SizedBox(height: 20),
               TextFormField(
                 controller: _controllerPassword,
                 obscureText: _isHiddenPassword,
                 validator: validator.validatePassword,
                 decoration: InputDecoration(
+                  fillColor: Colors.white, // Set the fill color to white
+                  filled: true, // Enable fill color
+                  border: OutlineInputBorder(),
                   labelText: 'Password',
-                  suffix: InkWell(
-                    onTap: _togglePasswordView,
-                    child: Icon(
+                  prefixIcon: Icon(Icons.lock),
+                  suffixIcon: IconButton(
+                    icon: Icon(
                       _isHiddenPassword
-                          ? Icons.visibility
-                          : Icons.visibility_off,
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
+                    onPressed: _togglePasswordView,
                   ),
                 ),
               ),
               Text(errorMessage == '' ? '' : 'Hmm ? $errorMessage',
                   style: const TextStyle(color: Colors.red)),
+              SizedBox(height: 20),
               ElevatedButton(
+                child: Text('Login'),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     signInWithEmailAndPassword();
-                  }
+                  } // Handle login logic here
                 },
-                child: const Text('Login'),
+              ),
+              TextButton(
+                child: Text('Forgot password?'),
+                onPressed: () {
+                  // Handle forgot password logic here
+                },
               ),
               TextButton(
                 onPressed: () {
