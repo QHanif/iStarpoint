@@ -50,7 +50,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+
         color: Colors.lightBlue[100],
+
         padding: EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
@@ -65,12 +67,14 @@ class _LoginPageState extends State<LoginPage> {
               TextFormField(
                 controller: _controllerEmail,
                 validator: validator.validateEmail,
+
                 decoration: const InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
                   border: InputBorder.none,
                   labelText: 'Email',
                   labelStyle: TextStyle(color: Colors.black),
+
                   prefixIcon: Icon(Icons.email),
                 ),
               ),
@@ -80,6 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: _isHiddenPassword,
                 validator: validator.validatePassword,
                 decoration: InputDecoration(
+
                   fillColor: Colors.white,
                   filled: true, // Enable fill color
                   border: InputBorder.none,
@@ -88,10 +93,12 @@ class _LoginPageState extends State<LoginPage> {
                   suffix: InkWell(
                     onTap: _togglePasswordView,
                     child: Icon(
+
                       _isHiddenPassword
-                          ? Icons.visibility
-                          : Icons.visibility_off,
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
+                    onPressed: _togglePasswordView,
                   ),
                 ),
               ),
