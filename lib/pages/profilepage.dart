@@ -180,14 +180,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () => editField('Kulliyyah'),
                     ),
                     Center(
-                    child: Text(
-                      'Starpoints: ${userData['Starpoints'].toString()}',
-                        style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                      child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(Icons.star), // Add this line
+                          SizedBox(width: 8.0), // Add some spacing between the icon and the text
+                      Text(
+                        'Starpoints: ${userData['Starpoints'].toString()}',
+                            style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            ),
+                        ),
+                      ],
                 ),
+              ),
                   ],
                 );
               } else if (snapshot.hasError) {
