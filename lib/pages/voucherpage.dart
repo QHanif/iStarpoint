@@ -51,11 +51,6 @@ class VoucherPage extends StatelessWidget {
                   },
                   child: const Text('Claim'),
                 ),
-
-                //  ElevatedButton(
-                //   onPressed: () {},
-                //   child: Text('Claim'),
-                // ),
               ),
             ],
           ),
@@ -75,22 +70,10 @@ class VoucherPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children:
-              // _voucher("Nasi Lemak", 2, "assets/images/nasilemak.png"),
-              // _voucher("Satay", 3, "assets/images/satay.png"),
-              // _voucher("Rendang", 3, "assets/images/rendang.png"),
-              // _voucher("Mee Goreng", 2, "assets/images/meegoreng.png"),
-              // _voucher("Roti Canai", 2, "assets/images/roticanai.png"),
-              // _voucher("Briyani", 5, "assets/images/briyani.png"),
-              // _voucher("Coconut Shake", 2, "assets/images/coconut.png"),
-              // _voucher("Laksa", 3, "assets/images/laksa.png"),
-              // _voucher("Ayam Percik", 3, "assets/images/ayampercik.png"),
-              // _voucher("Keropok Lekor", 2, "assets/images/keropoklekor.png"),
-              // _voucher("Cendol", 1, "assets/images/cendol.png"),
-              voucherDetails
-                  .map((voucher) =>
-                      _voucher(context, voucher)) // Pass context to _voucher
-                  .toList(), //  Use the eventDetails list to create the VOUCHER widgets
+          children: voucherDetails
+              .map((voucher) =>
+                  _voucher(context, voucher)) // Pass context to _voucher
+              .toList(), //  Use the eventDetails list to create the VOUCHER widgets
         ),
       ),
     );

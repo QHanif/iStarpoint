@@ -71,6 +71,25 @@ class _QrScannerState extends State<QrScanner> {
             .collection('Users')
             .doc(userDoc.id)
             .update({'Starpoints': newStarpoints});
+
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Success!'),
+              content: Text(
+                  '$voucherName with RM ${voucherValueInt / 100} off has been redeemed!'),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
       }
 
       // Update the document
