@@ -5,10 +5,10 @@ List<Map<String, dynamic>> eventDetails = [
     'eventTitle': "Flutter UI Design Workshop",
     'eventDate': "30 January 2024",
     'eventTime': "8:00 am - 12:00 pm",
-    'eventLocation': "Multi Perpose Hall, KICT",
+    'eventLocation': "Multi Purpose Hall, KICT",
     'eventPicture': "assets/images/flutter.png",
     'eventInfo': "Learn how to design beautiful UIs with Flutter",
-    'geotag': {'latitude': 51.5074, 'longitude': 0.1278},
+    'geotag': {'latitude': 3.2539195736541564, 'longitude': 101.7301742050894},
     'isJoin': false,
   },
   {
@@ -18,7 +18,7 @@ List<Map<String, dynamic>> eventDetails = [
     'eventLocation': "Conference Room, KICT",
     'eventPicture': "assets/images/datascience.png",
     'eventInfo': "Explore the world of data science",
-    'geotag': {'latitude': 51.5074, 'longitude': 0.1278},
+    'geotag': {'latitude': 3.2539195736541564, 'longitude': 101.7301742050894},
     'isJoin': false,
   },
   {
@@ -28,7 +28,7 @@ List<Map<String, dynamic>> eventDetails = [
     'eventLocation': "Lab 5, KICT",
     'eventPicture': "assets/images/cybersecurity.png",
     'eventInfo': "Learn about the latest trends in cybersecurity",
-    'geotag': {'latitude': 51.5074, 'longitude': 0.1278},
+    'geotag': {'latitude': 3.2543922519724107, 'longitude': 101.7300922166442},
     'isJoin': false,
   },
   {
@@ -38,7 +38,7 @@ List<Map<String, dynamic>> eventDetails = [
     'eventLocation': "Auditorium, KICT",
     'eventPicture': "assets/images/ai_ml.png",
     'eventInfo': "Discover the power of AI and machine learning",
-    'geotag': {'latitude': 51.5074, 'longitude': 0.1278},
+    'geotag': {'latitude': 3.2539195736541564, 'longitude': 101.7301742050894},
     'isJoin': false,
   },
   {
@@ -48,7 +48,7 @@ List<Map<String, dynamic>> eventDetails = [
     'eventLocation': "Lab 6, KICT",
     'eventPicture': "assets/images/webdev.png",
     'eventInfo': "Master the fundamentals of web development",
-    'geotag': {'latitude': 51.5074, 'longitude': 0.1278},
+    'geotag': {'latitude': 3.2543922519724107, 'longitude': 101.7300922166442},
     'isJoin': false,
   },
   {
@@ -58,7 +58,7 @@ List<Map<String, dynamic>> eventDetails = [
     'eventLocation': "Conference Room, KICT",
     'eventPicture': "assets/images/cloudcomputing.png",
     'eventInfo': "Explore the future of cloud computing",
-    'geotag': {'latitude': 51.5074, 'longitude': 0.1278},
+    'geotag': {'latitude': 3.2539195736541564, 'longitude': 101.7301742050894},
     'isJoin': false,
   },
 ];
