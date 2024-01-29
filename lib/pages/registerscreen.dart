@@ -2,10 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-
 import '../auth.dart';
 import '../util/validate.dart';
 
@@ -21,11 +18,10 @@ class _RegisterPageState extends State<RegisterPage> {
   String? errorMessage = '';
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
-
+  final TextEditingController _controllerUsername = TextEditingController();
   final TextEditingController _controllerConfirmPassword =
       TextEditingController();
   final TextEditingController _kulliyyahController = TextEditingController();
-
 
   bool _isHiddenPassword = true;
 
@@ -37,7 +33,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> createUserWithEmailAndPassword() async {
     try {
-       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
@@ -76,15 +73,15 @@ class _RegisterPageState extends State<RegisterPage> {
       });
     }
   }
+
   final User? user = FirebaseAuth.instance.currentUser;
   final _formKey = GlobalKey<FormState>();
-  final User? user = Auth().currentUser;
+  // final User? user = Auth().currentUser;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
-
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(20.0),
@@ -110,7 +107,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       borderRadius: BorderRadius.circular(
                           30.0), // Keep the border rounded
                     ),
-
                   ),
                 ),
                 const SizedBox(height: 10.0),
