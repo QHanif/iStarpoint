@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:iStarpoint/util/eventdetails.dart';
 
-class EventPage extends StatelessWidget {
+class EventPage extends StatefulWidget {
   const EventPage({super.key});
 
+  @override
+  State<EventPage> createState() => _EventPageState();
+}
+
+class _EventPageState extends State<EventPage> {
   Widget _event(BuildContext context, Map<String, dynamic> event) {
     return Container(
       width: double.infinity,
@@ -67,12 +72,13 @@ class EventPage extends StatelessWidget {
                       ? const Text('Joined',
                           style: TextStyle(color: Colors.green))
                       : ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
+                          onPressed: () async {
+                            await Navigator.pushNamed(
                               context,
                               '/eventdetail',
                               arguments: eventDetails.indexOf(event),
                             );
+                            setState(() {});
                           },
                           child: const Text('Join Event'),
                         ),
