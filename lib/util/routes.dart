@@ -7,6 +7,7 @@ import 'package:iStarpoint/pages/profilepage.dart';
 import 'package:iStarpoint/pages/voucherpage.dart';
 import 'package:iStarpoint/pages/voucherqrpage.dart';
 import 'package:iStarpoint/qrscanner/qrscanner.dart';
+import 'package:iStarpoint/pages/forgotpassword.dart';
 
 final Map<String, WidgetBuilder> appRoutes = {
   '/login': (context) => const LoginPage(),
@@ -15,6 +16,7 @@ final Map<String, WidgetBuilder> appRoutes = {
   '/eventdetail': (context) => EventDetailPage(
         eventIndex: ModalRoute.of(context)!.settings.arguments as int? ?? 0,
       ),
+  '/forgotpassword': (context) => const ForgotPasswordPage(),
   '/voucherpage': (context) => VoucherPage(),
   '/voucherqrpage': (context) => VoucherQrPage(),
   '/qrscanner': (context) => const QrScanner(),
