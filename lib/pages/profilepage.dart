@@ -89,45 +89,96 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: const Color.fromARGB(255, 203, 176, 208),
         title: Text('Profile Page'),
       ),
-      body: ListView(
-        children: [
-          const SizedBox(height: 50),
+// <<<<<<< azhad
+//       body: ListView(
+//         children: [
+//           const SizedBox(height: 50),
 
-          const Icon(
-            Icons.person,
-            size:72,
-            ),
+//           const Icon(
+//             Icons.person,
+//             size:72,
+//             ),
 
-            const SizedBox(height: 20),
+//             const SizedBox(height: 20),
 
-          Text(
-            currentUser!.email! ,
-            textAlign: TextAlign.center,
-          ), 
+//           Text(
+//             currentUser!.email! ,
+//             textAlign: TextAlign.center,
+//           ), 
 
-          const SizedBox(height: 20),
+//           const SizedBox(height: 20),
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'My details',
-              textAlign: TextAlign.center,
-              style: const TextStyle(
+//           Padding(
+//             padding: const EdgeInsets.all(8.0),
+//             child: Text(
+//               'My details',
+//               textAlign: TextAlign.center,
+//               style: const TextStyle(
+//               ),
+//             ),
+//           ),
+//           MyTextBox(
+//             text:'username',
+//             sectionName: 'Username',
+//             onPressed:()=> editField('username'),
+//           ),
+
+//           MyTextBox(
+//             text:'kulliyyah',
+//             sectionName: 'Kulliyyah',
+//             onPressed:()=> editField('kulliyyah'),
+//           ),
+//         ],
+// =======
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                'Username:  ${user?.displayName ?? ''}',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold, // Make the text bold
+                ),
               ),
             ),
-          ),
-          MyTextBox(
-            text:'username',
-            sectionName: 'Username',
-            onPressed:()=> editField('username'),
-          ),
-
-          MyTextBox(
-            text:'kulliyyah',
-            sectionName: 'Kulliyyah',
-            onPressed:()=> editField('kulliyyah'),
-          ),
-        ],
+            Container(
+              padding: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                'Email:  ${user?.email ?? ''}',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold, // Make the text bold
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Text(
+                'Kulliyyah:  ${user?.displayName ?? ''}',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold, // Make the text bold
+                ),
+              ),
+            ),
+          ],
+        ),
+// >>>>>>> main
       ),
     );
   }
