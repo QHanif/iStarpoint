@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iStarpoint/util/eventdetails.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class EventDetailPage extends StatefulWidget {
   final int eventIndex;
@@ -12,6 +14,16 @@ class EventDetailPage extends StatefulWidget {
 }
 
 class _EventDetailPageState extends State<EventDetailPage> {
+  XFile? _image;
+  Future<void> pickImageFromCamera() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
   late GoogleMapController mapController;
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -108,11 +120,39 @@ class _EventDetailPageState extends State<EventDetailPage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton(
-                      onPressed: event['isJoin'] ? null : () => _joinEvent(),
-                      child: Text(event['isJoin'] ? 'Joined' : 'Join Event'),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const Text('Attendance Picture'),
+                        const SizedBox(height: 10),
+                        if (_image != null)
+                          Image.file(File(_image!.path))
+                        else
+                          const Text('No image selected.'),
+                        const SizedBox(height: 10),
+                        ElevatedButton(
+                          onPressed: pickImageFromCamera,
+                          // style: ElevatedButton.styleFrom(
+                          //   foregroundColor: Colors.white,
+                          //   backgroundColor: Colors.blue,
+                          // ),
+                          child: const Text('Take a picture'),
+                        ),
+                        const SizedBox(height: 10),
+                        ElevatedButton(
+                          onPressed: (_image != null && !event['isJoin'])
+                              ? () => _joinEvent()
+                              : null,
+                          // style: ElevatedButton.styleFrom(
+                          //   foregroundColor: Colors.white,
+                          //   backgroundColor: Colors.blue,
+                          // ),
+                          child:
+                              Text(event['isJoin'] ? 'Joined' : 'Join Event'),
+                        ),
+                      ],
                     ),
                   ),
                 ],
