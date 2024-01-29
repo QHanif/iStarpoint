@@ -168,11 +168,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(height: 20),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'My Details',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(),
-                      ),
                     ),
                     MyTextBox(
                       text: Auth().currentUser?.displayName ?? 'No username',
@@ -184,11 +179,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       sectionName: 'Kulliyyah',
                       onPressed: () => editField('Kulliyyah'),
                     ),
-                    MyTextBox(
-                      text: userData['Starpoints'].toString(),
-                      sectionName: 'Starpoints',
-                      onPressed: null,
+                    Center(
+                    child: Text(
+                      'Starpoints: ${userData['Starpoints'].toString()}',
+                        style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                ),
                   ],
                 );
               } else if (snapshot.hasError) {
