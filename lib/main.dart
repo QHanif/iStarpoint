@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
                   ModalRoute.of(context)!.settings.arguments as int? ?? 0,
             ),
         '/voucherqrpage': (context) => VoucherQrPage(),
-        '/qrscanner': (context) => QrScanner(),
+        '/qrscanner': (context) => const QrScanner(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

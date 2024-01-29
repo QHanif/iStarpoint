@@ -5,11 +5,11 @@ class MyTextBox extends StatelessWidget {
   final String sectionName;
   final void Function()? onPressed;
   const MyTextBox({
-    super.key,
+    Key? key,
     required this.text,
     required this.sectionName,
     required this.onPressed,
-    });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +18,31 @@ class MyTextBox extends StatelessWidget {
         border: Border.all(color: Colors.blueAccent),
         borderRadius: BorderRadius.circular(20.0),
       ),
-      padding: const EdgeInsets.only(left: 15,bottom:15),
-      margin: const EdgeInsets.only(left:20,right:20,top:20),
-      child:Column(
+      padding: const EdgeInsets.only(left: 15, bottom: 15),
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(sectionName,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              Text(
+                sectionName,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               IconButton(
                 onPressed: onPressed,
-                icon: Icon(Icons.edit),
+                icon: const Icon(Icons.edit),
               )
             ],
-          )
+          ),
+          Text(
+            text,
+            style: const TextStyle(fontSize: 16),
+          ),
         ],
-      )
+      ),
     );
   }
 }
