@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iStarpoint/qrscanner/qrscanner.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-
-void main () {
+void main() {
   runApp(const MyApp());
 }
 
@@ -13,9 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'QR Scanner',
-      home: const QrScanner(),
+      home: QrScanner(),
     );
   }
 }
@@ -28,32 +26,36 @@ class QrScanner extends StatefulWidget {
 }
 
 class _QrScannerState extends State<QrScanner> {
-  String qrResult='Scanned Data will appear here';
+  String qrResult = 'Scanned Data will appear here';
 
   Future<void> scanQR() async {
-    try{
-      final qrCode = await FlutterBarcodeScanner.scanBarcode('#ff6666', 'Cancel', true, ScanMode.QR);
+    try {
+      final qrCode = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.QR);
       if (!mounted) return;
       setState(() {
-        this.qrResult = qrCode.toString();
+        qrResult = qrCode.toString();
       });
-
-    }on PlatformException{
-      qrResult = 'Failed to read QR Code';}
+    } on PlatformException {
+      qrResult = 'Failed to read QR Code';
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('QR Scanner')),
+      appBar: AppBar(title: const Text('QR Scanner')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-              SizedBox(height: 30),
-              Text('$qrResult',style:TextStyle(color:Colors.black),),
-              SizedBox(height: 30),
-              ElevatedButton(onPressed: scanQR, child: Text('Scan QR Code'))
+            const SizedBox(height: 30),
+            Text(
+              qrResult,
+              style: const TextStyle(color: Colors.black),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(onPressed: scanQR, child: const Text('Scan QR Code'))
           ],
         ),
       ),
