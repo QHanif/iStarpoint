@@ -3,6 +3,8 @@ import 'package:iStarpoint/util/eventdetails.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../auth.dart';
 
 class EventDetailPage extends StatefulWidget {
   final int eventIndex;
@@ -164,13 +166,36 @@ class _EventDetailPageState extends State<EventDetailPage> {
     );
   }
 
-  void _joinEvent() {
+  void _joinEvent() async {
     setState(() {
-      // Increase user's starpoints by 30 need user firebase logic fire
-      //user.starpoints += 30;
-
       // Set the event's isJoin property to true
       eventDetails[widget.eventIndex]['isJoin'] = true;
     });
+
+    // Get a reference to the Firestore instance
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    // Get the current user's email
+    String? userEmail = Auth().currentUser?.email;
+
+    if (userEmail != null) {
+      // Query the Users collection for the user document
+      QuerySnapshot userQuery = await firestore
+          .collection('Users')
+          .where('Email', isEqualTo: userEmail)
+          .get();
+
+      // Get the user's document
+      DocumentSnapshot userDoc = userQuery.docs.first;
+
+      // Increase the user's starpoints by 30
+      int newStarpoints = userDoc['Starpoints'] + 30;
+
+      // Update the user's document
+      await firestore
+          .collection('Users')
+          .doc(userDoc.id)
+          .update({'Starpoints': newStarpoints});
+    }
   }
 }
