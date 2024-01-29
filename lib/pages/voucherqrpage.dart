@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iStarpoint/auth.dart';
 import 'package:iStarpoint/qrscanner/qrscanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class VoucherQrPage extends StatelessWidget {
+  final User? user = Auth().currentUser;
   @override
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
@@ -38,19 +41,12 @@ class VoucherQrPage extends StatelessWidget {
           ),
           Center(
             child: QrImageView(
-              data: "$voucherName RM $voucherValue",
+              data:
+                  "$voucherName,${voucherValue * 100},${user?.email ?? 'User email'} ",
               version: QrVersions.auto,
               size: 200.0,
             ),
           ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QrScanner()),
-                );
-              },
-              child: const Text('qrscanner'))
         ],
       ),
     );
