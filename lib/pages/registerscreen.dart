@@ -74,9 +74,9 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  final User? user = FirebaseAuth.instance.currentUser;
+  // final User? user = FirebaseAuth.instance.currentUser;
   final _formKey = GlobalKey<FormState>();
-  // final User? user = Auth().currentUser;
+  final User? user = Auth().currentUser;
 
   @override
   Widget build(BuildContext context) {
