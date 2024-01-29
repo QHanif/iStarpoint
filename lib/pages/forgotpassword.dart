@@ -51,9 +51,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue[100],
-        title: Text('Forgot Password'),
+        title: const Text('Forgot Password'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Add a back button
+          icon: const Icon(Icons.arrow_back), // Add a back button
           onPressed: () =>
               Navigator.pop(context), // Navigate to the previous page
         ),
@@ -61,21 +61,21 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       body: Container(
         color: Colors.lightBlue[100], // This will make the background blue
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   'Please enter your email, we will send you a link to reset your password.',
                   style: TextStyle(fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: _emailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
                     labelText: 'Enter your email',
@@ -92,13 +92,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20), // Add some spacing
+                const SizedBox(height: 20), // Add some spacing
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.all(15), // Add some padding
+                      padding: const EdgeInsets.all(15), // Add some padding
                       // Increase text size
                     ),
-                    child: Text('Reset Password'),
+                    child: const Text('Reset Password'),
                     onPressed: () {
                       passwordResetEmail();
                     }),
