@@ -57,6 +57,15 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 10),
+              Container(
+                width: 250.0,
+                height: 250.0,
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
               Text(
                 'Login',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -98,7 +107,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Text(errorMessage == '' ? '' : 'Hmm ? $errorMessage',
                   style: const TextStyle(color: Colors.red)),
-              SizedBox(height: 20),
               ElevatedButton(
                 child: Text('Login'),
                 onPressed: () {
@@ -110,10 +118,10 @@ class _LoginPageState extends State<LoginPage> {
               TextButton(
                 child: Text('Forgot password?'),
                 onPressed: () {
-                  // Handle forgot password logic here
+                  Navigator.pushNamed(context, '/forgotpassword');
                 },
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/register');

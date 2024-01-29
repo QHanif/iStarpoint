@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:iStarpoint/pages/forgotpassword.dart';
 import 'package:iStarpoint/pages/voucherqrpage.dart';
 import 'package:iStarpoint/widgettree.dart';
 //qoys
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
                   ModalRoute.of(context)!.settings.arguments as int? ?? 0,
             ),
         '/voucherqrpage': (context) => VoucherQrPage(),
+        '/forgotpassword': (context) => ForgotPasswordPage(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

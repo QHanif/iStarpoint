@@ -78,28 +78,26 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
       body: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20.0),
         child: Form(
-          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
+              Text(
                 'Register',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextFormField(
                 controller: _controllerUsername,
                 validator: validator.validateDisplayName,
                 decoration: InputDecoration(
-                  fillColor: Colors.white, // Set the fill color to white
+                  fillColor: Colors.white,
                   filled: true, // Enable fill color
                   labelText: 'Username',
                   border: OutlineInputBorder(
-                    borderSide: BorderSide.none, // Make the border disappear
-                    borderRadius:
-                        BorderRadius.circular(30.0), // Keep the border rounded
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
               ),
@@ -108,13 +106,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _controllerEmail,
                 validator: validator.validateEmail,
                 decoration: InputDecoration(
-                  fillColor: Colors.white, // Set the fill color to white
+                  fillColor: Colors.white,
                   filled: true, // Enable fill color
                   labelText: 'Email',
                   border: OutlineInputBorder(
-                    borderSide: BorderSide.none, // Make the border disappear
-                    borderRadius:
-                        BorderRadius.circular(30.0), // Keep the border rounded
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
               ),
@@ -124,7 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: _isHiddenPassword,
                 validator: validator.validatePassword,
                 decoration: InputDecoration(
-                  fillColor: Colors.white, // Set the fill color to white
+                  fillColor: Colors.white,
                   filled: true, // Enable fill color
                   labelText: 'Password',
                   suffix: InkWell(
@@ -136,9 +133,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide.none, // Make the border disappear
-                    borderRadius:
-                        BorderRadius.circular(30.0), // Keep the border rounded
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
               ),
@@ -151,7 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       value, _controllerPassword.text);
                 },
                 decoration: InputDecoration(
-                  fillColor: Colors.white, // Set the fill color to white
+                  fillColor: Colors.white,
                   filled: true, // Enable fill color
                   labelText: 'Confirm Password',
                   suffix: InkWell(
@@ -163,9 +159,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide.none, // Make the border disappear
-                    borderRadius:
-                        BorderRadius.circular(30.0), // Keep the border rounded
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
               ),

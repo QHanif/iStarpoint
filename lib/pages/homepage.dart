@@ -20,6 +20,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.purple[100],
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Image.asset('assets/images/logo2.png'),
+        ),
         backgroundColor: Colors.purple[300],
         title: Text('I-STARPOINTS'),
         actions: [
