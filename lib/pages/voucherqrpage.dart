@@ -3,6 +3,8 @@ import 'package:iStarpoint/qrscanner/qrscanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class VoucherQrPage extends StatelessWidget {
+  const VoucherQrPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;

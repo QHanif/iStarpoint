@@ -1,15 +1,9 @@
-import 'dart:io';
-
-import 'package:iStarpoint/pages/voucherqrpage.dart';
-import 'package:iStarpoint/qrscanner/qrscanner.dart';
-import 'package:iStarpoint/widgettree.dart';
 //qoys
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:iStarpoint/pages/loginscreen.dart';
-import 'package:iStarpoint/pages/registerscreen.dart';
-import 'package:iStarpoint/pages/eventdetailpage.dart';
+import 'package:iStarpoint/util/routes.dart';
+import 'package:iStarpoint/widgettree.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'dart:io';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,16 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My App',
       // initialRoute: '/',
-      routes: {
-        '/login': (context) => const LoginPage(),
-        '/register': (context) => const RegisterPage(),
-        '/eventdetail': (context) => EventDetailPage(
-              eventIndex:
-                  ModalRoute.of(context)!.settings.arguments as int? ?? 0,
-            ),
-        '/voucherqrpage': (context) => VoucherQrPage(),
-        '/qrscanner': (context) => QrScanner(),
-      },
+      routes: appRoutes,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
