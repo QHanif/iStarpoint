@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../auth.dart';
 import '../util/validate.dart';
 
@@ -17,9 +16,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final Validator validator = Validator();
   String? errorMessage = '';
-  final TextEditingController _controllerUsername = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
+  final TextEditingController _controllerUsername = TextEditingController();
   final TextEditingController _controllerConfirmPassword =
       TextEditingController();
   final TextEditingController _kulliyyahController = TextEditingController();
@@ -34,10 +33,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> createUserWithEmailAndPassword() async {
     try {
-      await Auth().createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _controllerEmail.text,
         password: _controllerPassword.text,
-        username: _controllerUsername.text,
       );
 
       // Registration successful, show a dialog
@@ -75,6 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
+  // final User? user = FirebaseAuth.instance.currentUser;
   final _formKey = GlobalKey<FormState>();
   final User? user = Auth().currentUser;
 
