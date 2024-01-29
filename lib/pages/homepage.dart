@@ -2,13 +2,15 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iStarpoint/auth.dart';
-import 'package:iStarpoint/pages/voucherpage.dart';
-import 'package:iStarpoint/pages/eventpage.dart';
-import 'package:iStarpoint/pages/profilepage.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final User? user = Auth().currentUser;
 
   Future<void> _signOut() async {
@@ -90,12 +92,11 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ProfilePage()),
-                                  );
+                                  Navigator.pushNamed(context, '/profilepage')
+                                      .then((_) {
+                                    // force rebuild not working?
+                                    setState(() {});
+                                  });
                                 },
                               ),
                             ),
@@ -146,12 +147,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const EventPage()),
-                                  );
+                                  Navigator.pushNamed(context, '/eventpage');
                                 },
                               ),
                             ),
@@ -202,11 +198,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => VoucherPage()),
-                                  );
+                                  Navigator.pushNamed(context, '/voucherpage');
                                 },
                               ),
                             ),

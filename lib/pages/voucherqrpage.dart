@@ -6,6 +6,8 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 class VoucherQrPage extends StatelessWidget {
   final User? user = Auth().currentUser;
+
+  VoucherQrPage({super.key});
   @override
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
@@ -13,9 +15,9 @@ class VoucherQrPage extends StatelessWidget {
     final int voucherValue = arguments['voucherValue'];
     final String voucherPicture = arguments['voucherPicture'] as String;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 237, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 237, 255),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 237, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 237, 255),
         title: const Text('Vouchers'),
       ),
       body: Column(
