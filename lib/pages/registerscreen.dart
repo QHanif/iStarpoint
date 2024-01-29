@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Add this import statement
 import '../auth.dart';
 import '../util/validate.dart';
 
@@ -15,11 +16,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final Validator validator = Validator();
   String? errorMessage = '';
-  final TextEditingController _controllerUsername = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
-  final TextEditingController _controllerConfirmPassword =
-      TextEditingController();
+  final TextEditingController _controllerConfirmPassword = TextEditingController();
 
   bool _isHiddenPassword = true;
 
@@ -31,11 +30,15 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> createUserWithEmailAndPassword() async {
     try {
-      await Auth().createUserWithEmailAndPassword(
+       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _controllerEmail.text,
         password: _controllerPassword.text,
-        username: _controllerUsername.text,
       );
+
+      FirebaseFirestore.instance.collection("Users").doc(userCredential.user!.email).set({
+        'Username': _controllerEmail.text.split('@')[0],
+        'Kulliyyah': 'Empty'
+      });
       // Registration successful, show a dialog
       // ignore: use_build_context_synchronously
       showDialog(
@@ -70,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
       });
     }
   }
-
+  final User? user = FirebaseAuth.instance.currentUser;
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -80,6 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Container(
         padding: EdgeInsets.all(20.0),
         child: Form(
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -88,20 +92,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
-              TextFormField(
-                controller: _controllerUsername,
-                validator: validator.validateDisplayName,
-                decoration: InputDecoration(
-                  fillColor: Colors.white, // Set the fill color to white
-                  filled: true, // Enable fill color
-                  labelText: 'Username',
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none, // Make the border disappear
-                    borderRadius:
-                        BorderRadius.circular(30.0), // Keep the border rounded
-                  ),
-                ),
-              ),
               const SizedBox(height: 10.0),
               TextFormField(
                 controller: _controllerEmail,
