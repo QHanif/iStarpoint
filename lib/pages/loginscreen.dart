@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:iStarpoint/qrscanner/qrscanner.dart';
 import '../auth.dart';
 import '../util/validate.dart';
 
@@ -127,6 +128,14 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 child: const Text('Go to Register'),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QrScanner()),
+                    );
+                  },
+                  child: const Text('qrscanner'))
             ],
           ),
         ),
