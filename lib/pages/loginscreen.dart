@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:iStarpoint/qrscanner/qrscanner.dart';
 import '../auth.dart';
 import '../util/validate.dart';
 
@@ -50,99 +49,99 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.lightBlue[100],
-        padding: const EdgeInsets.all(20.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: 200.0,
-                height: 200.0,
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const Text(
-                'Login',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _controllerEmail,
-                validator: validator.validateEmail,
-                decoration: const InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    borderSide: BorderSide.none,
+      backgroundColor: Colors.lightBlue[100],
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.lightBlue[100],
+          padding: const EdgeInsets.all(20.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: 200.0,
+                  height: 200.0,
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.cover,
                   ),
-                  labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.black),
-                  suffixIcon: Icon(Icons.email),
                 ),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _controllerPassword,
-                obscureText: _isHiddenPassword,
-                validator: validator.validatePassword,
-                decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true, // Enable fill color
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    borderSide: BorderSide.none,
-                  ),
-                  labelText: 'Password',
-                  labelStyle: const TextStyle(color: Colors.black),
-                  suffix: InkWell(
-                    onTap: _togglePasswordView,
-                    child: Icon(
-                      _isHiddenPassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+                const Text(
+                  'Login',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: _controllerEmail,
+                  validator: validator.validateEmail,
+                  decoration: const InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderSide: BorderSide.none,
                     ),
-                    // onPressed: _togglePasswordView,
+                    labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.black),
+                    suffixIcon: Icon(Icons.email),
                   ),
                 ),
-              ),
-              Text(errorMessage == '' ? '' : 'Hmm ? $errorMessage',
-                  style: const TextStyle(color: Colors.red)),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                child: const Text('Login'),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    signInWithEmailAndPassword();
-                  } // Handle login logic here
-                },
-              ),
-              TextButton(
-                child: const Text('Forgot password?'),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/forgotpassword');
-                },
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-                child: const Text('Go to Register'),
-              ),
-              ElevatedButton(
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: _controllerPassword,
+                  obscureText: _isHiddenPassword,
+                  validator: validator.validatePassword,
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true, // Enable fill color
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderSide: BorderSide.none,
+                    ),
+                    labelText: 'Password',
+                    labelStyle: const TextStyle(color: Colors.black),
+                    suffix: InkWell(
+                      onTap: _togglePasswordView,
+                      child: Icon(
+                        _isHiddenPassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      // onPressed: _togglePasswordView,
+                    ),
+                  ),
+                ),
+                Text(errorMessage == '' ? '' : 'Hmm ? $errorMessage',
+                    style: const TextStyle(color: Colors.red)),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  child: const Text('Login'),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => QrScanner()),
-                    );
+                    if (_formKey.currentState!.validate()) {
+                      signInWithEmailAndPassword();
+                    } // Handle login logic here
                   },
-                  child: const Text('FO QR Scanner App'))
-            ],
+                ),
+                TextButton(
+                  child: const Text('Forgot password?'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/forgotpassword');
+                  },
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
+                  child: const Text('Go to Register'),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/qrscanner');
+                    },
+                    child: const Text('FO QR Scanner App'))
+              ],
+            ),
           ),
         ),
       ),
