@@ -77,7 +77,10 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: const InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderSide: BorderSide.none,
+                  ),
                   labelText: 'Email',
                   labelStyle: TextStyle(color: Colors.black),
                   suffixIcon: Icon(Icons.email),
@@ -91,7 +94,10 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true, // Enable fill color
-                  border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderSide: BorderSide.none,
+                  ),
                   labelText: 'Password',
                   labelStyle: const TextStyle(color: Colors.black),
                   suffix: InkWell(
@@ -135,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                       MaterialPageRoute(builder: (context) => QrScanner()),
                     );
                   },
-                  child: const Text('qrscanner'))
+                  child: const Text('FO QR Scanner App'))
             ],
           ),
         ),
