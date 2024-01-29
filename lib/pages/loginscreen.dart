@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
         color: Colors.lightBlue[100],
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -66,11 +66,11 @@ class _LoginPageState extends State<LoginPage> {
                   fit: BoxFit.cover,
                 ),
               ),
-              Text(
+              const Text(
                 'Login',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _controllerEmail,
                 validator: validator.validateEmail,
@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                   suffixIcon: Icon(Icons.email),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _controllerPassword,
                 obscureText: _isHiddenPassword,
@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                   filled: true, // Enable fill color
                   border: InputBorder.none,
                   labelText: 'Password',
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: const TextStyle(color: Colors.black),
                   suffix: InkWell(
                     onTap: _togglePasswordView,
                     child: Icon(
@@ -107,8 +107,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Text(errorMessage == '' ? '' : 'Hmm ? $errorMessage',
                   style: const TextStyle(color: Colors.red)),
+              const SizedBox(height: 20),
               ElevatedButton(
-                child: Text('Login'),
+                child: const Text('Login'),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     signInWithEmailAndPassword();
@@ -116,12 +117,13 @@ class _LoginPageState extends State<LoginPage> {
                 },
               ),
               TextButton(
-                child: Text('Forgot password?'),
+                child: const Text('Forgot password?'),
                 onPressed: () {
                   Navigator.pushNamed(context, '/forgotpassword');
                 },
               ),
               SizedBox(height: 10),
+              const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/register');

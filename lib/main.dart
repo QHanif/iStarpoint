@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:iStarpoint/pages/forgotpassword.dart';
 import 'package:iStarpoint/pages/voucherqrpage.dart';
+import 'package:iStarpoint/qrscanner/qrscanner.dart';
 import 'package:iStarpoint/widgettree.dart';
 //qoys
 
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
             ),
         '/voucherqrpage': (context) => VoucherQrPage(),
         '/forgotpassword': (context) => ForgotPasswordPage(),
+        '/qrscanner': (context) => const QrScanner(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
