@@ -1,6 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:iStarpoint/auth.dart';
 import 'package:iStarpoint/components/text_box.dart';
 
 // class ProfilePage extends StatelessWidget {
@@ -78,8 +78,40 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final currentUser = FirebaseAuth.instance.currentUser;
 
-  Future<void>editField(String Field)async{
+  final userCollection = FirebaseFirestore.instance.collection('Users');
 
+  Future<void>editField(String field)async{
+    String newValue = '';
+    await showDialog(
+      context: context,
+      builder:(context)=> AlertDialog(
+        title: Text('Edit $field'),
+        content: TextField(
+          autofocus: true,
+          decoration: InputDecoration(
+            hintText: 'Enter new $field',
+          hintStyle: TextStyle(color: Colors.grey),
+          ),
+          onChanged: (value) => newValue = value,
+        ),
+        actions:[
+          TextButton(
+            child:Text('Cancel'),
+            onPressed: ()=> Navigator.of(context).pop(),
+          ),
+
+          TextButton(
+            child:Text('Save'),
+            onPressed: ()=> Navigator.of(context).pop(newValue),
+          )
+        ]
+      ),
+    );
+    if (newValue.trim().length>0){
+      await userCollection.doc(currentUser?.email).update({
+        field: newValue,
+      });
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -89,7 +121,12 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: const Color.fromARGB(255, 203, 176, 208),
         title: Text('Profile Page'),
       ),
-      body: ListView(
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance.collection("Users").doc(currentUser?.email).snapshots(),
+        builder: (context, snapshot) {
+         if (snapshot.hasData) {
+          final userData = snapshot.data!.data() as Map<String, dynamic>;
+          return ListView(
         children: [
           const SizedBox(height: 50),
 
@@ -111,24 +148,35 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               'My details',
+              
               textAlign: TextAlign.center,
               style: const TextStyle(
               ),
             ),
           ),
           MyTextBox(
-            text:'username',
+            text:userData['username'].toString(),
             sectionName: 'Username',
             onPressed:()=> editField('username'),
           ),
 
           MyTextBox(
-            text:'kulliyyah',
+            text:userData['kulliyyah'].toString(),
             sectionName: 'Kulliyyah',
             onPressed:()=> editField('kulliyyah'),
           ),
         ],
-      ),
+      );
+         } else if (snapshot.hasError){
+          return Center(
+            child: Text('Something went wrong'),
+          );
+         }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      )
     );
   }
 }
