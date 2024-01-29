@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:iStarpoint/pages/voucherqrpage.dart';
-import 'package:iStarpoint/qrscanner/qrscanner.dart';
 import 'package:iStarpoint/widgettree.dart';
 //qoys
 
@@ -42,7 +41,6 @@ class MyApp extends StatelessWidget {
                   ModalRoute.of(context)!.settings.arguments as int? ?? 0,
             ),
         '/voucherqrpage': (context) => VoucherQrPage(),
-        '/qrscanner': (context) => QrScanner(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

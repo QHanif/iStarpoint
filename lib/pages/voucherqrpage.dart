@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iStarpoint/qrscanner/qrscanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class VoucherQrPage extends StatelessWidget {
@@ -43,14 +42,6 @@ class VoucherQrPage extends StatelessWidget {
               size: 200.0,
             ),
           ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QrScanner()),
-                );
-              },
-              child: const Text('qrscanner'))
         ],
       ),
     );
