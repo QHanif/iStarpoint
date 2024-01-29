@@ -16,7 +16,7 @@ final Map<String, WidgetBuilder> appRoutes = {
         eventIndex: ModalRoute.of(context)!.settings.arguments as int? ?? 0,
       ),
   '/voucherpage': (context) => VoucherPage(),
-  '/voucherqrpage': (context) => const VoucherQrPage(),
+  '/voucherqrpage': (context) => VoucherQrPage(),
   '/qrscanner': (context) => const QrScanner(),
   '/profilepage': (context) => const ProfilePage(),
 };
