@@ -57,10 +57,9 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 10),
               Container(
-                width: 250.0,
-                height: 250.0,
+                width: 225.0,
+                height: 225.0,
                 child: Image.asset(
                   'assets/images/logo.png',
                   fit: BoxFit.cover,
@@ -122,8 +121,6 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.pushNamed(context, '/forgotpassword');
                 },
               ),
-              SizedBox(height: 10),
-              const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/register');
