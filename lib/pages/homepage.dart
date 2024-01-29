@@ -23,13 +23,13 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.purple[100],
       appBar: AppBar(
         backgroundColor: Colors.purple[300],
-        title: Text('I-STARPOINTS'),
+        title: const Text('I-STARPOINTS'),
         actions: [
           Tooltip(
             // Add a tooltip
             message: 'Logout',
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.logout,
                 color: Colors.white,
               ),
@@ -40,20 +40,20 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
                 'Welcome  ${user?.displayName ?? ''}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold, // Make the text bold
                 ),
               ),
-              SizedBox(height: 80),
-              Container(
+              const SizedBox(height: 80),
+              SizedBox(
                 width: double.infinity,
                 height: 100,
                 child: Card(
@@ -80,11 +80,11 @@ class _HomePageState extends State<HomePage> {
                           children: <Widget>[
                             Center(
                               child: ListTile(
-                                leading: Icon(
+                                leading: const Icon(
                                   Icons.person,
                                   size: 60.0,
                                 ),
-                                title: Text(
+                                title: const Text(
                                   'Profile',
                                   style: TextStyle(
                                     fontSize: 20.0,
@@ -107,8 +107,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              Container(
+              const SizedBox(height: 20),
+              SizedBox(
                 width: double.infinity,
                 height: 100,
                 child: Card(
@@ -135,11 +135,11 @@ class _HomePageState extends State<HomePage> {
                           children: <Widget>[
                             Center(
                               child: ListTile(
-                                leading: Icon(
+                                leading: const Icon(
                                   Icons.event,
                                   size: 60.0,
                                 ),
-                                title: Text(
+                                title: const Text(
                                   'Event',
                                   style: TextStyle(
                                     fontSize: 20.0,
@@ -158,8 +158,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              Container(
+              const SizedBox(height: 20),
+              SizedBox(
                 width: double.infinity,
                 height: 100,
                 child: Card(
@@ -186,11 +186,11 @@ class _HomePageState extends State<HomePage> {
                           children: <Widget>[
                             Center(
                               child: ListTile(
-                                leading: Icon(
+                                leading: const Icon(
                                   Icons.card_giftcard,
                                   size: 60.0,
                                 ),
-                                title: Text(
+                                title: const Text(
                                   'Voucher',
                                   style: TextStyle(
                                     fontSize: 20.0,
