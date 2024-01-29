@@ -58,6 +58,14 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Container(
+                width: 200.0,
+                height: 200.0,
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
               const Text(
                 'Login',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -111,10 +119,9 @@ class _LoginPageState extends State<LoginPage> {
               TextButton(
                 child: const Text('Forgot password?'),
                 onPressed: () {
-                  // Handle forgot password logic here
+                  Navigator.pushNamed(context, '/forgotpassword');
                 },
               ),
-              const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/register');
