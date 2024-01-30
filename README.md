@@ -18,6 +18,7 @@ Fluttered
 
 * Zaidi
   * eventdetailpage.dart
+  * eventdetails.dart
   * validate.dart
   * main.dart
 * Azhad
