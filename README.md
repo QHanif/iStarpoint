@@ -14,18 +14,21 @@ Fluttered
   * eventpage.dart
   * voucherpage.dart
   * voucherdetails.dart
-  * voucherqrpage.dart
+  * qrscanner.dart
 
 * Zaidi
+  * routes.dart
   * eventdetailpage.dart
   * eventdetails.dart
   * validate.dart
   * main.dart
 * Azhad
-  * qrscanner.dart
+  * voucherqrpage.dart
   * profilepage.dart
   * auth.dart
+  * text_box.dart
 * Saufi
+  * forgotpassword.dart
   * loginscreen.dart
   * homepage.dart
   * widgettree.dart
