@@ -49,10 +49,10 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue[100],
+      backgroundColor: Colors.purple[100],
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.lightBlue[100],
+          color: Colors.purple[100],
           padding: const EdgeInsets.all(20.0),
           child: Form(
             key: _formKey,
@@ -60,8 +60,8 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  width: 200.0,
-                  height: 200.0,
+                  width: 400.0,
+                  height: 400.0,
                   child: Image.asset(
                     'assets/images/logo.png',
                     fit: BoxFit.cover,

@@ -78,11 +78,12 @@ class _QrScannerState extends State<QrScanner> {
             return AlertDialog(
               title: const Text('Success!'),
               content: Text(
-                  '$voucherName with RM ${voucherValueInt / 100} off has been redeemed!'),
+                  '$voucherName with RM ${(voucherValueInt / 100).toInt()} off has been redeemed!'),
               actions: <Widget>[
                 TextButton(
                   child: Text('OK'),
                   onPressed: () {
+                    Navigator.of(context).pop();
                     Navigator.of(context).pop();
                   },
                 ),
