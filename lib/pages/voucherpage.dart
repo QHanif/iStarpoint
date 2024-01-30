@@ -1,7 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iStarpoint/util/voucherdetails.dart';
+import 'package:iStarpoint/auth.dart';
 
 class VoucherPage extends StatelessWidget {
+  final currentUser = FirebaseAuth.instance.currentUser;
   Widget _voucher(BuildContext context, Map<String, dynamic> voucher) {
     return Container(
       margin: EdgeInsets.all(10),
@@ -67,14 +71,55 @@ class VoucherPage extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 255, 237, 255),
         title: const Text('Vouchers'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: voucherDetails
-              .map((voucher) =>
-                  _voucher(context, voucher)) // Pass context to _voucher
-              .toList(), //  Use the eventDetails list to create the VOUCHER widgets
-        ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("Users")
+            .where('Email', isEqualTo: currentUser?.email)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
+            final userData =
+                snapshot.data!.docs.first.data() as Map<String, dynamic>;
+            return ListView(
+              children: [
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.star), // Add this line
+                      SizedBox(
+                          width:
+                              8.0), // Add some spacing between the icon and the text
+                      Text(
+                        'Starpoints: ${userData['Starpoints'].toString()}',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: voucherDetails
+                        .map((voucher) => _voucher(
+                            context, voucher)) // Pass context to _voucher
+                        .toList(), //  Use the eventDetails list to create the VOUCHER widgets
+                  ),
+                ),
+              ],
+            );
+          } else if (snapshot.hasError) {
+            return const Center(
+              child: Text('Something went wrong'),
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
