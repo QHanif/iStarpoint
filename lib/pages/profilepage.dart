@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:iStarpoint/components/text_box.dart';
+import 'package:iStarpoint/util/text_box.dart';
 import 'package:iStarpoint/auth.dart';
 
 // class ProfilePage extends StatelessWidget {
