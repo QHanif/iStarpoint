@@ -84,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
       backgroundColor: Colors.purple[100],
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.fromLTRB(20, 100, 20, 100),
           child: Form(
             key: _formKey,
             child: Column(
