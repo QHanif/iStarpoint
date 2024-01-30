@@ -14,7 +14,7 @@ Fluttered
   * eventpage.dart
   * voucherpage.dart
   * voucherdetails.dart
-  * voucherqrpage.dart
+  * qrscanner.dart
 
 * Zaidi
   * eventdetailpage.dart
@@ -22,12 +22,13 @@ Fluttered
   * validate.dart
   * main.dart
 * Azhad
-  * qrscanner.dart
+  * voucherqrpage.dart
   * profilepage.dart
   * auth.dart
 * Saufi
   * loginscreen.dart
   * homepage.dart
+  * register.dart
   * widgettree.dart
 
 ## Brief Description of the Final Assessment
