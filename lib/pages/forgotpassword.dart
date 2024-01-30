@@ -50,7 +50,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue[100],
+        backgroundColor: Colors.purple[100],
         title: const Text('Forgot Password'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back), // Add a back button
@@ -59,7 +59,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         ),
       ),
       body: Container(
-        color: Colors.lightBlue[100], // This will make the background blue
+        color: Colors.purple[100], // This will make the background blue
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
