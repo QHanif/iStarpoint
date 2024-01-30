@@ -1,4 +1,4 @@
-# INFO-4335-Case-Study-2
+# INFO-4335-Final-Asssessment
 
 ## Group Name
 Fluttered
@@ -11,24 +11,30 @@ Fluttered
 
 ## Group Member Assigned Task
 * Qoys
-  * registerscreen.dart
-  * homepage.dart
+  * eventpage.dart
+  * voucherpage.dart
+  * voucherdetails.dart
+  * voucherqrpage.dart
+
 * Zaidi
-  * main.dart
+  * eventdetailpage.dart
   * validate.dart
+  * main.dart
 * Azhad
+  * qrscanner.dart
+  * profilepage.dart
   * auth.dart
-  * firebase_auth setup
 * Saufi
   * loginscreen.dart
+  * homepage.dart
   * widgettree.dart
 
-## Brief Description of the case study
-The case study focus on developing Firebase Authentication. It helps understand the benefit of using Firebase Authentication such as it is already secure to be use and easily integrated with other users. 
+## Brief Description of the Final Assessment
+The project mainly focus on providing a better view on what can be done with IIUM starpoints. This project will encourage students to join more events as it will provide them rewards in the future. The starpoints that the have collected will not go unused as it can be use to claim free discounts on foods. 
 
 ## References
-* https://docs.flutter.dev/cookbook/forms/validation
+* https://docs.flutter.dev/
 * https://firebase.google.com/docs/auth/web/manage-users
-* https://www.youtube.com/watch?v=rWamixHIKmQ
+* https://www.youtube.com/watch?v=TpW7nLL57uQ
 * Class handouts from course instructor: [Dr. Muhamad Sadry Abu Seman](https://github.com/muhdsadry), DIS, KICT, IIUM
   
