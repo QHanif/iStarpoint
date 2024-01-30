@@ -29,6 +29,7 @@ Fluttered
   * text_box.dart
 * Saufi
   * forgotpassword.dart
+  * register.dart
   * loginscreen.dart
   * homepage.dart
   * widgettree.dart
